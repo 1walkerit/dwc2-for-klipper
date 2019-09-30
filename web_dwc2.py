@@ -1474,7 +1474,7 @@ class web_dwc2:
 			';Filament used: \d*.\d+m'	,					#	Cura
 			';Material#1 Used:\s\d+\.?\d+',					#	ideamaker
 			'.*filament\sused\s.mm.\s=\s[0-9\.]+',					#	PrusaSlicer
-			''									#	IceSL
+			';Total filament lenght: '									#	IceSL
 			]
 		#	slicernames
 		slicers = [ 
