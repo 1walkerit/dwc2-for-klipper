@@ -1427,7 +1427,8 @@ class web_dwc2:
 			'G1\sZ\d*\.\d*' ,					# 	Slic3r PE
 			'\sZ\\d+.\\d*' ,					# 	Cura
 			'\sZ\d+.\d{3}' ,					#	ideamaker
-			'G1\sZ\d*\.\d*'  					#	PrusaSlicer
+			'G1\sZ\d*\.\d*',  					#	PrusaSlicer
+			''							# 	IceSL
 			]
 
 			#	heigth of the first layer
@@ -1438,7 +1439,8 @@ class web_dwc2:
 			'G1\sZ\d*\.\d*' ,								#	Slic3r PE
 			'\sZ\\d+.\\d\s' ,								#	Cura
 			';LAYER:0\n;Z:\d+.\d{3}',						#	ideamaker
-			'G1\sZ\d*\.\d*'									#	PrusaSlicer
+			'G1\sZ\d*\.\d*',									#	PrusaSlicer
+			'; z_layer_height_first_layer_mm :'					#	IceSL
 			]
 
 		#	the heigth of layers
@@ -1449,7 +1451,8 @@ class web_dwc2:
 			'; layer_height = \d.\d+' ,						#	Slic3r PE
 			';Layer height: \d.\d+' ,						# 	Cura
 			';Z:\d+.\d{3}',									#	ideamaker
-			'; layer_height = \d.\d+'						#	PrusaSlicer
+			'; layer_height = \d.\d+',						#	PrusaSlicer
+			'; z_layer_height_mm :'							#	IceSL
 			]
 		#	slicers estimate print time
 		time_e = [
@@ -1459,7 +1462,8 @@ class web_dwc2:
 			'\d+h?\s?\d+m\s\d+s' ,							#	Slic3r PE
 			';TIME:\\d+' ,									#	Cura
 			';Print Time:\s\d+\.?\d+',						#	ideamaker
-			'\d+h?\s?\d+m\s\d+s'							#	PrusaSlicer
+			'\d+h?\s?\d+m\s\d+s',							#	PrusaSlicer
+			''									# 	IceSL
 			]
 		#	slicers filament usage
 		filament = [
@@ -1469,7 +1473,8 @@ class web_dwc2:
 			'.*filament\sused\s=\s.*mm' ,					#	Slic3r PE ; filament used =
 			';Filament used: \d*.\d+m'	,					#	Cura
 			';Material#1 Used:\s\d+\.?\d+',					#	ideamaker
-			'.*filament\sused\s.mm.\s=\s[0-9\.]+'					#	PrusaSlicer
+			'.*filament\sused\s.mm.\s=\s[0-9\.]+',					#	PrusaSlicer
+			''									#	IceSL
 			]
 		#	slicernames
 		slicers = [ 
@@ -1479,7 +1484,8 @@ class web_dwc2:
 			'Slic3r Prusa Edition\s.*\so',
 			'Cura_SteamEngine.*' ,
 			'ideaMaker\s([0-9]*\..*,)',
-			'PrusaSlicer'
+			'PrusaSlicer',
+			'IceSL'
 			]
 		#
 		meta = { "slicer": "Slicer is not implemented" }
