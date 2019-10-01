@@ -122,7 +122,7 @@ A Gcode callback and ack system is missing in klippy today for other objects tha
 See https://github.com/KevinOConnor/klipper/pull/1290
 
 ## IceSL configuration
-For working with IceSL slicer added code to printer.lua function header. Example
+For working with IceSL slicer, add code to printer.lua - function header. Example
 
 function header()
   output(';===================')
