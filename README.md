@@ -123,7 +123,7 @@ See https://github.com/KevinOConnor/klipper/pull/1290
 
 ## IceSL configuration
 For working with IceSL slicer, add code to printer.lua - function header. Example
-
+```
 function header()
   output(';===================')
   output(';TOTAL INFORMATION')
@@ -136,3 +136,4 @@ function header()
   h = h:gsub('<HBPTEMP>', bed_temp_degree_c)
   output(h)
 end
+```
