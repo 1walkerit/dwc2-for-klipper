@@ -120,3 +120,19 @@ web_path: dwc2/web
 ## Fix missing stuff in klipper today
 A Gcode callback and ack system is missing in klippy today for other objects than the serial. You need to use my klipper fork or patch the few lines by hand in gcode.py.
 See https://github.com/KevinOConnor/klipper/pull/1290
+
+## IceSL configuration
+For working with IceSL slicer added code to printer.lua function header. Example
+
+function header()
+  output(';===================')
+  output(';TOTAL INFORMATION')
+  output(';Number of layers: ' .. number_of_layers)
+  output(';Total filament lenght: ' .. f(filament_tot_length_mm[0]) .. ' mm')
+  output(';Print time:   '..f(time_sec/60)..' minutes')
+  output(';===================')
+  h = file('header.gcode')
+  h = h:gsub('<TOOLTEMP>', extruder_temp_degree_c[extruders[0]])
+  h = h:gsub('<HBPTEMP>', bed_temp_degree_c)
+  output(h)
+end
