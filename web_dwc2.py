@@ -1428,19 +1428,19 @@ class web_dwc2:
 			'\sZ\\d+.\\d*' ,					# 	Cura
 			'\sZ\d+.\d{3}' ,					#	ideamaker
 			'G1\sZ\d*\.\d*',  					#	PrusaSlicer
-			''							# 	IceSL
+			'*\sZ\\d+.\\d*'						# 	IceSL
 			]
 
 			#	heigth of the first layer
 		first_h = [ 
 			'first_layer_thickness_mm\s=\s\d+\.\d+' , 		#	kisslicers setting
-			'; first_layer_height =' ,						# 	Slic3r
-			'\sZ\\d+.\\d*' ,								#	Simplify3d
-			'G1\sZ\d*\.\d*' ,								#	Slic3r PE
-			'\sZ\\d+.\\d\s' ,								#	Cura
-			';LAYER:0\n;Z:\d+.\d{3}',						#	ideamaker
-			'G1\sZ\d*\.\d*',									#	PrusaSlicer
-			'; z_layer_height_first_layer_mm :'					#	IceSL
+			'; first_layer_height =' ,				# 	Slic3r
+			'\sZ\\d+.\\d*' ,					#	Simplify3d
+			'G1\sZ\d*\.\d*' ,					#	Slic3r PE
+			'\sZ\\d+.\\d\s' ,					#	Cura
+			';LAYER:0\n;Z:\d+.\d{3}',				#	ideamaker
+			'G1\sZ\d*\.\d*',					#	PrusaSlicer
+			'; z_layer_height_first_layer_mm\s:\s*\d+.\d+'		#	IceSL
 			]
 
 		#	the heigth of layers
@@ -1452,7 +1452,7 @@ class web_dwc2:
 			';Layer height: \d.\d+' ,						# 	Cura
 			';Z:\d+.\d{3}',									#	ideamaker
 			'; layer_height = \d.\d+',						#	PrusaSlicer
-			'; z_layer_height_mm :'							#	IceSL
+			'; z_layer_height_mm\s:\s*\d+.\d+'							#	IceSL
 			]
 		#	slicers estimate print time
 		time_e = [
@@ -1463,18 +1463,18 @@ class web_dwc2:
 			';TIME:\\d+' ,									#	Cura
 			';Print Time:\s\d+\.?\d+',						#	ideamaker
 			'\d+h?\s?\d+m\s\d+s',							#	PrusaSlicer
-			''									# 	IceSL
+			'\s\s\d+\.\d*\sminutes'									# 	IceSL
 			]
 		#	slicers filament usage
 		filament = [
-			'Ext 1 =.*mm' ,									#	Kisslicer
-			';.*filament used =' ,							#	Slic3r
+			'Ext 1 =.*mm' ,							#	Kisslicer
+			';.*filament used =' ,						#	Slic3r
 			';.*Filament length: \d+.*\(' ,					#	S3d
 			'.*filament\sused\s=\s.*mm' ,					#	Slic3r PE ; filament used =
-			';Filament used: \d*.\d+m'	,					#	Cura
+			';Filament used: \d*.\d+m'	,				#	Cura
 			';Material#1 Used:\s\d+\.?\d+',					#	ideamaker
-			'.*filament\sused\s.mm.\s=\s[0-9\.]+',					#	PrusaSlicer
-			';Total filament lenght: '									#	IceSL
+			'.*filament\sused\s.mm.\s=\s[0-9\.]+',				#	PrusaSlicer
+			'Total filament lenght:.*mm'					#	IceSL
 			]
 		#	slicernames
 		slicers = [ 
